@@ -25,7 +25,6 @@ public class Azienda implements Comparable{
      public int compareTo(Object o) {
         Azienda az=(Azienda)o;
         int val=nome.compareTo(az.getNome());
-        
         return val;
     }
      
