@@ -19,6 +19,7 @@ public class Azienda implements Comparable{
     HashSet<Azienda> aziendeCollegate; // Le aziende che dipendono
     HashMap<String,String> ruoliAziendali;
     String nome;
+    static int count=0;
     
     
     @Override
@@ -46,11 +47,11 @@ public class Azienda implements Comparable{
        } 
     
     public Azienda(HashSet<Persona> persone,String[] ruoli) {
+        count++;
+        System.out.println("Creo:"+count);
         this.ruoliAziendali = new HashMap();
         aziendeCollegate=new HashSet();
-        int aziende;
         int npers;
-        aziende=(int) Math.round(3*Math.random());// Ogni azienda ha fino a "aziende" sotto-aziende
         npers=2+(int) Math.round(3*Math.random());// Ogni azienda ha fino a "aziende" sotto-aziende
         nome=Utilities.nomeCasuale();
         for (int i=0;i<npers;i++){
@@ -76,18 +77,18 @@ public class Azienda implements Comparable{
             k=(int) Math.round(size*Math.random());
             ruoliAziendali.put(ruoli[k], daInserire.getNome());
         }
-        for (int i=0;i<aziende;i++){
-            aziendeCollegate.add(new Azienda(persone,ruoli));
-        }
     }
 
-//    private String nomeCasuale() {
-//        char[] buf = new char[10];
-//        for (int i=0;i<10;i++){
-//            buf[i]= (char) ('A'+Math.round(Math.random()*26));
-//        }
-//        return new String(buf);
-//    }
+    public void espandiRete(HashSet<Persona> persone,String[] ruoli){
+        //if (Math.random()>0.2){ // per limitare la ricorsione
+            int aziende=(int) Math.round(3*Math.random());// Ogni azienda ha fino a "aziende" sotto-aziende
+            for (int i=0;i<aziende;i++){
+                Azienda tmp=new Azienda(persone,ruoli);
+                tmp.espandiRete(persone, ruoli);
+                aziendeCollegate.add(tmp);
+            }
+        //}
+    }
     
     @Override
     public String toString(){
@@ -116,6 +117,12 @@ public class Azienda implements Comparable{
     private int totaleSottoAziende() {
         return aziendeCollegate.size();
     }
-    
-    
+
+    Azienda[] getAziende() {
+        return (Azienda[]) aziendeCollegate.toArray(new Azienda[aziendeCollegate.size()]);
+    }
+
+    int getId() {
+        return count;
+    }
 }
