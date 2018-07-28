@@ -7,39 +7,52 @@ package generatorediretiaziendali;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 /**
  *
  * @author elsoft
  */
 public class GeneratoreDiRetiAziendali {
-    HashMap struttura;
-
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        struttura=new HashMap();
+        HashMap struttura = new HashMap();
+        LinkedList daRealizzare=new LinkedList();
         String[] ruoli={"Direttore",
             "Fondatore",
             "Finanziatore",
             "Amministratore"
         };
-        
         HashSet<Persona> persone=new HashSet();
-        int quante=(int) Math.round(8*Math.random());
-        Azienda az[]=new Azienda[quante];
-        System.out.println(">"+quante+"<");
+        int quante=3+(int) Math.round(8*Math.random());// di base generiamo un numero variabile tra 3 ed 11 aziende collegate alla prima
         for (int i=0;i<quante;i++){
-            az[i]=new Azienda(persone,ruoli);
-    //        espandiRete(az.getId());
-            az[i].espandiRete(persone, ruoli);
-            for(Azienda tmp:az[i].getAziende()){
-                tmp.espandiRete(persone, ruoli);
-            }
-            System.out.println(">>"+i+"<<");
-            //System.out.println(az[i]);
+            daRealizzare.push(Azienda.count);
         }
+        while (daRealizzare.size()>0) {
+            
+            Azienda az=new Azienda(persone,ruoli, (int) daRealizzare.pop()); // creo una nuova azienda in relazione con la prima nello stack
+            quante=(Azienda.count<10000)?(int) Math.round(8*Math.random()):0; // le aziende collegate alla nuova azienda a meno di aver già generato 100000 aziende, nel qual caso ci limitiamo a svuotare la coda
+            for (int i=0;i<quante;i++){
+                daRealizzare.push(az.id);
+            }
+            struttura.put(az.getId(),az);
+            System.out.println(az);
+        }
+        
+////        System.out.println(">"+quante+"<");
+//        for (int i=0;i<quante;i++){
+//            
+//    //        espandiRete(az.getId());
+//            az[i].espandiRete(persone, ruoli);
+//            for(Azienda tmp:az[i].getAziende()){
+//                tmp.espandiRete(persone, ruoli);
+//            }
+//            System.out.println(">>"+i+"<<");
+//            //System.out.println(az[i]);
+//        }
     }
     
 //    static void espandiRete(int id){

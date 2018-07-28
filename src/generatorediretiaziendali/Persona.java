@@ -17,7 +17,7 @@ class Persona implements Comparable {
     String nome;
     
     public Persona(){
-        nome=Utilities.nomeCasuale();
+        nome=Utilities.nomeCasuale("p");
     }
     
     @Override
