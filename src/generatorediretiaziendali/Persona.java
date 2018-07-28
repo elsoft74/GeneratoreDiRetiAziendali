@@ -48,4 +48,9 @@ class Persona implements Comparable {
     public String getNome(){
         return nome;
     }
+    
+    @Override
+    public String toString(){
+        return nome;
+    }
 }

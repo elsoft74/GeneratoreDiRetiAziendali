@@ -11,24 +11,55 @@ package generatorediretiaziendali;
  */
 public class Utilities {
     
+    static String[] ruoli={"Direttore",
+        "Fondatore",
+        "Finanziatore",
+        "Amministratore",
+        "Azionista",
+        "Membro CDA",
+        "Consulente esterno"
+    };
+    
     static String nomiPersone[]={"Antonio",
         "Antonia",
         "Alessandro",
-        "Alessandra"
+        "Alessandra",
+        "Giuseppe",
+        "Giuseppa",
+        "Nicola",
+        "Andrea",
+        "Alberto",
+        "Alfredo",
+        "Sonia",
+        "Federico",
+        "Federica",
+        "Ugo",
+        "Filippo",
+        "Filippa",
+        "Jarvis"
     };
     static String cognomiPersone[]={"Bianchi",
         "Rossi",
-        "Verdi"
+        "Verdi",
+        "De Santis",
+        "Carter"
+        
     };
     static String nomiAziendali[]={"Costruzioni",
         "Elettronica",
         "Trasporti",
+        "Idro",
+        
         ""
     };
     static String tipologieAziendali[]={"srl",
         "sas",
         "spa",
+        "snc",
         ""
+    };
+    static String ruoliInterpersonali[]={"Avvocato",
+        "Commercialista"
     };
     public static String nomeCasuale(String par) {
         String out="";
