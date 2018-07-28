@@ -36,31 +36,39 @@ public class Utilities {
         "Ugo",
         "Filippo",
         "Filippa",
-        "Jarvis"
+        "Jarvis",
+        "Clark",
+        "Peggy"
     };
+    
     static String cognomiPersone[]={"Bianchi",
         "Rossi",
         "Verdi",
         "De Santis",
-        "Carter"
-        
+        "Carter",
+        "Stark",
+        "Kent"
     };
+    
     static String nomiAziendali[]={"Costruzioni",
         "Elettronica",
         "Trasporti",
         "Idro",
-        
         ""
     };
+    
     static String tipologieAziendali[]={"srl",
         "sas",
         "spa",
         "snc",
+        "Inc.",
         ""
     };
+    
     static String ruoliInterpersonali[]={"Avvocato",
         "Commercialista"
     };
+    
     public static String nomeCasuale(String par) {
         String out="";
         switch (par){
